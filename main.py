@@ -1,3 +1,3 @@
-from Game import Game
+from lib.Game import Game
 game = Game()
 game.play()

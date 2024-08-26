@@ -1,6 +1,6 @@
 from colorama import Fore
-from human import Human
-from computer import Computer
+from .human import Human
+from .computer import Computer
 import time
 import sys
 class Game:
