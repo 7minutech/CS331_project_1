@@ -50,7 +50,7 @@ class Human:
         self.__ties += 1
     def get_losses(self):
         return self.__losses
-    def add_lossn(self):
+    def add_loss(self):
         self.__losses += 1
     # refactor: removed increment methods
     # b/c they were unused
