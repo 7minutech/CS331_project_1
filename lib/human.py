@@ -4,10 +4,10 @@ class Human:
     # feat: added quit to move set to allow user to quit out of program
     MOVE_SET = ["rock","paper", "scissors", "quit"]
     def __init__(self):
-        self.__move = "
+        self.__move = ""
         self.__wins = 0
-        self.ties = 0
-        self.losses = 0
+        self.__ties = 0
+        self.__losses = 0
     def set_move(self):
         print("Choose r:rock, p:paper, s:scissors, q:quit")
         # should use lower method on input for input validation
@@ -40,8 +40,18 @@ class Human:
             self.translate_move()
     def get_move(self):
         return self.__move
-    def get_win(self):
-        return self.__win
+    def get_wins(self):
+        return self.__wins
+    def add_win(self):
+        self.__wins += 1
+    def get_ties(self):
+        return self.__wins
+    def add_tie(self):
+        self.__ties += 1
+    def get_losses(self):
+        return self.__losses
+    def add_lossn(self):
+        self.__losses += 1
     # refactor: removed increment methods
     # b/c they were unused
 
