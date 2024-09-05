@@ -3,6 +3,7 @@ from .human import Human
 from .computer import Computer
 import time
 import sys
+import pdb
 class Game:
     # style: added constants for clarity used inside declare winner method
     PLAYER_1_WIN = 1
@@ -73,8 +74,8 @@ class Game:
 
         """Declares who won, changed name from winner to who_won for clarity"""
         #keeps things shorter/nicer
-        move_1 = self.player_1.move
-        move_2 = self.player_2.move
+        move_1 = self.player_1.get_move()
+        move_2 = self.player_2.get_move()
 
         # refactor: Shortened logic for clarity 
         # refactor: Removed the index into first element
@@ -137,7 +138,7 @@ class Game:
                 print(f"{Fore.YELLOW}It was a tie!{Fore.WHITE}")
     # feat: can quit out of program during the prompt for move
     def has_quit(self):
-        if self.player_1.move == "quit" or self.player_2.move == "quit":
+        if self.player_1.get_move() == "quit" or self.player_2.get_move() == "quit":
             if self.players == 1:
                 print(f"Stats:\nLost {self.player_1.losses}\nWon {self.player_1.wins}\nTies {self.player_1.ties}\nHave a good one!")
                 self.active = False
@@ -162,15 +163,15 @@ class Game:
 
         while self.players == Game.CHECK_IF_PLAYER_ONE and self.active:            
             self.round += 1
-            self.display_round()
-            self.count_down()
+            #self.display_round()
+            #self.count_down()
             #Gets/prompts moves
             self.player_1.set_valid_move()
             self.has_quit()
             self.player_2.set_move()
             self.who_won()
-            print (f"\nComputer move: {self.player_2.move}")
-            print (f"\nPlayer move: {self.player_1.move}")
+            print (f"\nComputer move: {self.player_2.get_move()}")
+            print (f"\nPlayer move: {self.player_1.get_move()}")
             # refactor: avoided repeated code by using method
             self.declare_winner()
 
@@ -191,8 +192,8 @@ class Game:
             
             self.who_won()
 
-            print (f"\nPlayer 1 move: {self.player_1.move}")
-            print (f"\nPlayer 2 move: {self.player_2.move}")
+            print (f"\nPlayer 1 move: {self.player_1.get_move()}")
+            print (f"\nPlayer 2 move: {self.player_2.get_move()}")
 
 
             # refactor: avoided repeated code by using method
