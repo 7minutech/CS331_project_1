@@ -69,8 +69,6 @@ class Game:
             time.sleep(0.075)
             print(char, end="")
         
-        
-
     def who_won(self):
 
         """Declares who won, changed name from winner to who_won for clarity"""
@@ -96,6 +94,7 @@ class Game:
             self.player_2.wins +=1
             self.winner = 2
             return 
+        
     def ending_prompt(self):
        
         while self.active:
@@ -118,6 +117,7 @@ class Game:
                 elif answer.lower() == 'y' or answer.lower() == 'yes':
                     self.active = True
                     return 
+                
     def declare_winner(self):
         #Changes prompt based on player count
         # feat: added colored text depending the result
