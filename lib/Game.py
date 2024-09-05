@@ -81,18 +81,18 @@ class Game:
         # refactor: Removed the index into first element
         # b/c the move is always the first letter of the move now
         if move_1[0] == 'r' and move_2[0] == 's' or move_1[0] == "p" and move_2[0] == "r" or move_1[0] == "s" and move_2[0] == "p":
-            self.player_1.wins +=1
-            self.player_2.losses +=1
+            self.player_1.add_win()
+            self.player_2.add_loss()
             self.winner = 1
             return 
         elif move_1[0] == move_2[0]:
-            self.player_1.ties += 1
-            self.player_2.ties += 1
+            self.player_1.add_tie()
+            self.player_2.add_tie()
             self.winner = 0
             return 
         else:
-            self.player_1.losses +=1
-            self.player_2.wins +=1
+            self.player_1.add_loss()
+            self.player_2.add_win()
             self.winner = 2
             return 
         
@@ -103,7 +103,7 @@ class Game:
          
             if self.players == Game.CHECK_IF_PLAYER_ONE:
                 if answer.lower() == 'n' or answer.lower() == 'no':
-                    print(f"Stats:\nLost {self.player_1.losses}\nWon {self.player_1.wins}\nTies {self.player_1.ties}\nHave a good one!")
+                    print(f"Stats:\nLost {self.player_1.get_losses()}\nWon {self.player_1.get_wins()}\nTies {self.player_1.get_ties()}\nHave a good one!")
                     self.active = False
                     return
                 elif answer.lower() == 'y' or answer.lower() == 'yes':
@@ -111,8 +111,8 @@ class Game:
                     return 
             if self.players == Game.CHECK_IF_PLAYER_TWO:
                 if answer.lower() == 'n' or answer.lower() == 'no':
-                    print(f"Stats Player 1:\nLost {self.player_1.losses}\nWon {self.player_1.wins}\nTies {self.player_1.ties}")
-                    print(f"\nStats Player 2:\nLost {self.player_2.losses}\nWon {self.player_2.wins}\nTies {self.player_2.ties}")
+                    print(f"Stats Player 1:\nLost {self.player_1.get_losses()}\nWon {self.player_1.get_wins()}\nTies {self.player_1.get_ties()}")
+                    print(f"\nStats Player 2:\nLost {self.player_2.get_losses()}\nWon {self.player_2.get_wins()}\nTies {self.player_2.get_ties()}")
                     self.active = False
                     return
                 elif answer.lower() == 'y' or answer.lower() == 'yes':
@@ -140,12 +140,12 @@ class Game:
     def has_quit(self):
         if self.player_1.get_move() == "quit" or self.player_2.get_move() == "quit":
             if self.players == 1:
-                print(f"Stats:\nLost {self.player_1.losses}\nWon {self.player_1.wins}\nTies {self.player_1.ties}\nHave a good one!")
+                print(f"Stats:\nLost {self.player_1.get_losses()}\nWon {self.player_1.get_wins()}\nTies {self.player_1.get_ties()}\nHave a good one!")
                 self.active = False
                 sys.exit()
             else:
-                print(f"Stats Player 1:\nLost {self.player_1.losses}\nWon {self.player_1.wins}\nTies {self.player_1.ties}")
-                print(f"\nStats Player 2:\nLost {self.player_2.losses}\nWon {self.player_2.wins}\nTies {self.player_2.ties}")
+                print(f"Stats Player 1:\nLost {self.player_1.get_losses()}\nWon {self.player_1.get_wins()}\nTies {self.player_1.get_ties()}")
+                print(f"\nStats Player 2:\nLost {self.player_2.get_losses()}\nWon {self.player_2.get_wins()}\nTies {self.player_2.get_ties()}")
                 self.active = False
                 sys.exit()
         
