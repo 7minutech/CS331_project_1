@@ -1,5 +1,5 @@
-import pdb
 class Human:
+    '''Class representing a human player in rock paper scissors'''
     # style: capitalized MOVE_SET to show it's a constant
     # feat: added quit to move set to allow user to quit out of program
     MOVE_SET = ["rock","paper", "scissors", "quit"]
