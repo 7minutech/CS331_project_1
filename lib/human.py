@@ -8,11 +8,11 @@ class Human:
         self.__wins = 0
         self.__ties = 0
         self.__losses = 0
-    def set_move(self):
+    def __set_move(self):
         print("Choose r:rock, p:paper, s:scissors, q:quit")
         # should use lower method on input for input validation
         self.__move = input("Enter your move: ").lower()
-    def is_valid_move(self):
+    def __is_valid_move(self):
         # need to check if move is valid 
         # by checking move set
         if self.__move not in Human.MOVE_SET:
@@ -20,7 +20,7 @@ class Human:
             return False
         else:
             return True
-    def translate_move(self):
+    def __translate_move(self):
         # must change move abbreviations
         # to their counterparts 
         if self.__move not in Human.MOVE_SET:
@@ -33,11 +33,11 @@ class Human:
             if self.__move == "q":
                 self.__move = "quit"
     def set_valid_move(self):
-        self.set_move()
-        self.translate_move()
-        while not self.is_valid_move():
-            self.set_move()
-            self.translate_move()
+        self.__set_move()
+        self.__translate_move()
+        while not self.__is_valid_move():
+            self.__set_move()
+            self.__translate_move()
     def get_move(self):
         return self.__move
     def get_wins(self):
