@@ -40,16 +40,10 @@ class Human:
             self.__translate_move()
     def get_move(self):
         return self.__move
-    def get_wins(self):
-        return self.__wins
     def add_win(self):
         self.__wins += 1
-    def get_ties(self):
-        return self.__wins
     def add_tie(self):
         self.__ties += 1
-    def get_losses(self):
-        return self.__losses
     def add_loss(self):
         self.__losses += 1
     def display_stats(self):
