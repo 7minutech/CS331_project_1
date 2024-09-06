@@ -52,6 +52,8 @@ class Human:
         return self.__losses
     def add_loss(self):
         self.__losses += 1
+    def display_stats(self):
+        print(f"Stats:\nLost {self.__losses}\nWon {self.__wins}\nTies {self.__ties}\nHave a good one!")
     # refactor: removed increment methods
     # b/c they were unused
 
