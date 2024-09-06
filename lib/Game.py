@@ -1,10 +1,13 @@
-from colorama import Fore
-from .human import Human
-from .computer import Computer
+'''time module provides a count down before each is played'''
 import time
 import sys
-import pdb
+from colorama import Fore
+from lib.human import Human
+from lib.computer import Computer
+
+
 class Game:
+    '''Class represents a game of rock paper scissors'''
     # style: added constants for clarity used inside declare winner method
     PLAYER_1_WIN = 1
     PLAYER_2_WIN = 2
@@ -140,12 +143,12 @@ class Game:
     def has_quit(self):
         if self.player_1.get_move() == "quit" or self.player_2.get_move() == "quit":
             if self.players == 1:
-                print(f"Stats:\nLost {self.player_1.get_losses()}\nWon {self.player_1.get_wins()}\nTies {self.player_1.get_ties()}\nHave a good one!")
+                self.player_1.display_stats()
                 self.active = False
                 sys.exit()
             else:
-                print(f"Stats Player 1:\nLost {self.player_1.get_losses()}\nWon {self.player_1.get_wins()}\nTies {self.player_1.get_ties()}")
-                print(f"\nStats Player 2:\nLost {self.player_2.get_losses()}\nWon {self.player_2.get_wins()}\nTies {self.player_2.get_ties()}")
+                self.player_1.display_stats()
+                self.player_2.display_stats()
                 self.active = False
                 sys.exit()
         
