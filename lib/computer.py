@@ -10,7 +10,7 @@ class Computer:
         self.__losses = 0
         self.__ties = 0
     def set_move(self):
-        self.__move = rand.choice(Computer.MOVE_SET)
+        self.__move = rand.choice(Computer.__MOVE_SET)
     def get_move(self):
         return self.__move
     def add_win(self):

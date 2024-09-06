@@ -15,7 +15,7 @@ class Human:
     def __is_valid_move(self):
         # need to check if move is valid 
         # by checking move set
-        if self.__move not in Human.MOVE_SET:
+        if self.__move not in Human.__MOVE_SET:
             print(f"\"{self.__move}\" is an invalid move")
             return False
         else:
@@ -23,7 +23,7 @@ class Human:
     def __translate_move(self):
         # must change move abbreviations
         # to their counterparts 
-        if self.__move not in Human.MOVE_SET:
+        if self.__move not in Human.__MOVE_SET:
             if self.__move == "r":
                 self.__move = "rock"
             if self.__move == "p":
