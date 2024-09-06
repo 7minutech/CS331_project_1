@@ -3,7 +3,7 @@ import random as rand
 class Computer:
     """Class representing a computer player for rock paper scissors"""
     # style: capitalized MOVE_SET to show it's a constant
-    MOVE_SET = ["rock","paper", "scissors"]
+    __MOVE_SET = ["rock","paper", "scissors"]
     def __init__(self):
         self.__move  = ""
         self.__wins = 0
