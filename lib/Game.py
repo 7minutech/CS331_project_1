@@ -103,7 +103,7 @@ class Game:
          
             if self.players == Game.CHECK_IF_PLAYER_ONE:
                 if answer.lower() == 'n' or answer.lower() == 'no':
-                    print(f"Stats:\nLost {self.player_1.get_losses()}\nWon {self.player_1.get_wins()}\nTies {self.player_1.get_ties()}\nHave a good one!")
+                    self.player_1.display_stats()
                     self.active = False
                     return
                 elif answer.lower() == 'y' or answer.lower() == 'yes':
@@ -111,8 +111,8 @@ class Game:
                     return 
             if self.players == Game.CHECK_IF_PLAYER_TWO:
                 if answer.lower() == 'n' or answer.lower() == 'no':
-                    print(f"Stats Player 1:\nLost {self.player_1.get_losses()}\nWon {self.player_1.get_wins()}\nTies {self.player_1.get_ties()}")
-                    print(f"\nStats Player 2:\nLost {self.player_2.get_losses()}\nWon {self.player_2.get_wins()}\nTies {self.player_2.get_ties()}")
+                    self.player_1.display_stats()
+                    self.player_2.display_stats()
                     self.active = False
                     return
                 elif answer.lower() == 'y' or answer.lower() == 'yes':
@@ -167,9 +167,9 @@ class Game:
             #self.count_down()
             #Gets/prompts moves
             self.player_1.set_valid_move()
-            self.has_quit()
             self.player_2.set_move()
             self.who_won()
+            self.has_quit()
             print (f"\nComputer move: {self.player_2.get_move()}")
             print (f"\nPlayer move: {self.player_1.get_move()}")
             # refactor: avoided repeated code by using method
