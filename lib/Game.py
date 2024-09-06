@@ -1,4 +1,4 @@
-'''time module provides a count down before each is played'''
+"""time module provides a count down before each is played"""
 import time
 import sys
 from colorama import Fore
@@ -7,14 +7,14 @@ from lib.computer import Computer
 
 
 class Game:
-    '''Class represents a game of rock paper scissors'''
+    """Class represents a game of rock paper scissors"""
     # style: added constants for clarity used inside declare winner method
-    PLAYER_1_WIN = 1
-    PLAYER_2_WIN = 2
+    __PLAYER_1_WIN = 1
+    __PLAYER_2_WIN = 2
 
-    CHECK_IF_PLAYER_ONE = 1
-    CHECK_IF_PLAYER_TWO = 2
-    ROUNDS = 3
+    __CHECK_IF_PLAYER_ONE = 1
+    __CHECK_IF_PLAYER_TWO = 2
+    __ROUNDS = 3
     """Game class handles prompting and win/loss"""
     def __init__(self):
 
@@ -29,7 +29,7 @@ class Game:
         # b/c need to check when the 3rd round has occurred
         self.round = 0
     
-    def starting_prompt(self):
+    def __starting_prompt(self):
         """Handles initial prompting"""
     
         #Initial prompt loop
@@ -54,7 +54,7 @@ class Game:
             else:
                 print("input invalid")
     # feat: shows a count down before the first move is played 
-    def count_down(self):
+    def __count_down(self):
         # style: time before round starts is longer
         # b/c it lets the user see the results of the previous round easier
         time.sleep(1.5)
@@ -67,15 +67,15 @@ class Game:
         print("shoot!")
         time.sleep(0.5)
     # feat: should display the round to the user after each round
-    def display_round(self):
+    def __display_round(self):
         message = f"\n---Round {self.round}---\n"
         for char in message:
             time.sleep(0.075)
             print(char, end="")
         
-    def who_won(self):
+    def __who_won(self):
 
-        """Declares who won, changed name from winner to who_won for clarity"""
+        """Declares who won, changed name from winner to __who_won for clarity"""
         #keeps things shorter/nicer
         move_1 = self.player_1.get_move()
         move_2 = self.player_2.get_move()
@@ -99,12 +99,12 @@ class Game:
             self.winner = 2
             return 
         
-    def ending_prompt(self):
+    def __ending_prompt(self):
        
         while self.active:
             answer =  input("Would you like to play again? (Y/N):")
          
-            if self.players == Game.CHECK_IF_PLAYER_ONE:
+            if self.players == Game.__CHECK_IF_PLAYER_ONE:
                 if answer.lower() == 'n' or answer.lower() == 'no':
                     self.player_1.display_stats()
                     self.active = False
@@ -112,7 +112,7 @@ class Game:
                 elif answer.lower() == 'y' or answer.lower() == 'yes':
                     self.active = True
                     return 
-            if self.players == Game.CHECK_IF_PLAYER_TWO:
+            if self.players == Game.__CHECK_IF_PLAYER_TWO:
                 if answer.lower() == 'n' or answer.lower() == 'no':
                     self.player_1.display_stats()
                     self.player_2.display_stats()
@@ -122,25 +122,25 @@ class Game:
                     self.active = True
                     return 
                 
-    def declare_winner(self):
+    def __declare_winner(self):
         #Changes prompt based on player count
         # feat: added colored text depending the result
-        if self.players == Game.CHECK_IF_PLAYER_ONE:
-            if self.winner == Game.PLAYER_1_WIN:
+        if self.players == Game.__CHECK_IF_PLAYER_ONE:
+            if self.winner == Game.__PLAYER_1_WIN:
                 print(f"{Fore.GREEN}You win{Fore.WHITE}")
-            elif self.winner == Game.PLAYER_2_WIN:
+            elif self.winner == Game.__PLAYER_2_WIN:
                 print(f"{Fore.RED}You lost{Fore.WHITE}")
             else:
                 print(f"{Fore.YELLOW}It was a tie!{Fore.WHITE}")
         else:
-            if self.winner == Game.PLAYER_1_WIN:
+            if self.winner == Game.__PLAYER_1_WIN:
                 print(f"{Fore.GREEN}Player 1 wins!{Fore.WHITE}") 
-            elif self.winner == Game.PLAYER_2_WIN:
+            elif self.winner == Game.__PLAYER_2_WIN:
                 print(f"{Fore.GREEN}Player 2 wins!{Fore.WHITE}")
             else:
                 print(f"{Fore.YELLOW}It was a tie!{Fore.WHITE}")
     # feat: can quit out of program during the prompt for move
-    def has_quit(self):
+    def __has_quit(self):
         if self.player_1.get_move() == "quit" or self.player_2.get_move() == "quit":
             if self.players == 1:
                 self.player_1.display_stats()
@@ -154,56 +154,56 @@ class Game:
         
     def play(self):       
         """Main loop"""
-        self.starting_prompt()
+        self.__starting_prompt()
         #creates and sets players according to selection
-        if self.players == Game.CHECK_IF_PLAYER_ONE:
+        if self.players == Game.__CHECK_IF_PLAYER_ONE:
             self.player_1 = Human()
             self.player_2 = Computer()
            
-        elif self.players == Game.CHECK_IF_PLAYER_TWO:
+        elif self.players == Game.__CHECK_IF_PLAYER_TWO:
             self.player_1 = Human()
             self.player_2 = Human()
 
-        while self.players == Game.CHECK_IF_PLAYER_ONE and self.active:            
+        while self.players == Game.__CHECK_IF_PLAYER_ONE and self.active:            
             self.round += 1
-            #self.display_round()
-            #self.count_down()
+            #self.__display_round()
+            #self.__count_down()
             #Gets/prompts moves
             self.player_1.set_valid_move()
             self.player_2.set_move()
-            self.who_won()
-            self.has_quit()
+            self.__who_won()
+            self.__has_quit()
             print (f"\nComputer move: {self.player_2.get_move()}")
             print (f"\nPlayer move: {self.player_1.get_move()}")
             # refactor: avoided repeated code by using method
-            self.declare_winner()
+            self.__declare_winner()
 
             #refactor: avoided repeated code by using method
             if self.round % 3 == 0:
-                self.ending_prompt()
-        while self.players == Game.CHECK_IF_PLAYER_TWO and self.active:
+                self.__ending_prompt()
+        while self.players == Game.__CHECK_IF_PLAYER_TWO and self.active:
             self.round += 1
-            self.display_round()
-            self.count_down()
+            self.__display_round()
+            self.__count_down()
             #prompts players
             print("Player one, please select a move!")
             self.player_1.set_valid_move()
-            self.has_quit()
+            self.__has_quit()
             print("\nPlayer two, please select a move!")
             self.player_2.set_valid_move()
-            self.has_quit()
+            self.__has_quit()
             
-            self.who_won()
+            self.__who_won()
 
             print (f"\nPlayer 1 move: {self.player_1.get_move()}")
             print (f"\nPlayer 2 move: {self.player_2.get_move()}")
 
 
             # refactor: avoided repeated code by using method
-            self.declare_winner()
+            self.__declare_winner()
 
             #refactor: avoided repeated code by using method
-            if self.round % Game.ROUNDS == 0:
-                self.ending_prompt()
+            if self.round % Game.__ROUNDS == 0:
+                self.__ending_prompt()
     
 
