@@ -5,6 +5,8 @@ from colorama import Fore
 from lib.human import Human
 from lib.computer import Computer
 
+import os
+
 
 class Game:
     """Class represents a game of rock paper scissors"""
@@ -189,6 +191,7 @@ class Game:
             print("Player one, please select a move!")
             self.player_1.set_valid_move()
             self.__has_quit()
+            os.system('cls')
             print("\nPlayer two, please select a move!")
             self.player_2.set_valid_move()
             self.__has_quit()
